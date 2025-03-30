@@ -1,0 +1,43 @@
+meta:
+  code: en
+  name: English
+
+strings:
+  general:
+    none: "(none)"
+    arrow: "→"
+
+  labels:
+    first: "First"
+    last: "Last"
+    username: "Username"
+
+  join:
+    welcome_header: "Welcome, {mention}! 🎉"
+    first_time: "This is your first time here. Current name on record: <b>{current}</b>."
+    history_intro: "Here's your name history that I know about (chronological):"
+
+  changes:
+    announcement: "{mention} changed name:"
+    history_intro: "Full history (chronological):"
+
+  setup:
+    choose_language: "Thanks for adding me! <b>Admins</b>, please choose a language for this chat:"
+
+  commands:
+    start: "Hi! I welcome new members and print their name history (observed by me).\nUse /help for commands."
+    help: "Commands:\n• /history — reply to a user or pass @username or numeric user_id to fetch history.\n• /setlang <code> — set bot language for this chat.\n• Add me to a group and grant permissions so I can welcome and track name changes."
+    history:
+      no_user_id: "No history found for this user id."
+      no_username: "No history found for @{username}."
+      usage: "Usage: reply to a user or `/history @username` or `/history 123456`"
+    setlang:
+      ok: "Language for this chat set to {name} ({lang_code})."
+      unknown: "Unknown language code: {lang_code}. Available: {available}."
+      only_admin: "Only group admins can change the bot language."
+      usage: "Usage: /setlang <code>. Available: {available}."
+
+  history:
+    title: "History for"
+
+  current_name: "Current name: <b>{name}</b>"
