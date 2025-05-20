@@ -1,0 +1,98 @@
+# -------------------------------------------------------
+# psychic-telegram-bot — .gitignore
+# Python/FastAPI + PTB + Poetry, Docker, tests, dotenv
+# -------------------------------------------------------
+
+# --- Python bytecode / cache ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# --- Virtual environments ---
+.venv/
+venv/
+env/
+ENV/
+.venv.bak/
+venv.bak/
+
+# --- Packaging / build artifacts ---
+build/
+dist/
+wheelhouse/
+*.egg-info/
+.eggs/
+pip-wheel-metadata/
+
+# --- Requirements exported from Poetry (we don't commit these) ---
+requirements.txt
+requirements-*.txt
+
+# --- Coverage / testing / type-check caches ---
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
+.mypy_cache/
+.pytype/
+.ruff_cache/
+.pyre/
+
+# --- Tooling / project caches ---
+.cache/
+.dmypy.json
+
+# --- Jupyter ---
+.ipynb_checkpoints/
+
+# --- Editors & IDEs ---
+.vscode/
+.idea/
+*.iml
+*.code-workspace
+
+# --- OS cruft ---
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Icon?
+
+# --- Dotenv / secrets (commit only examples) ---
+.env
+.env.*
+.envrc
+.direnv/
+# Allow checked-in examples/templates
+!.env.example
+!.env.*.example
+!.env.sample
+!.env.*.sample
+!.env.template
+!.env.*.template
+
+# The repo includes .env.dev / .env.prod / .env.local for local usage.
+# If you prefer to commit templates instead, rename them to *.example and keep real files untracked.
+
+# --- Docker / Compose (local-only overrides) ---
+docker-compose.override.yml
+docker-compose.override*.yml
+compose.override.yml
+compose.override*.yml
+
+# --- Logs ---
+*.log
+logs/
+log/
+tmp/
+temp/
+
+# --- Local databases / scratch data (keep MySQL schema in db/) ---
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+
+# --- Misc ---
+.python-version
