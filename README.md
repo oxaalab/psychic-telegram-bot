@@ -79,26 +79,26 @@ flowchart LR
 sequenceDiagram
   autonumber
   participant TG as Telegram
-  participant WEB as FastAPI Webhook
-  participant PTB as PTB Handlers
-  participant DB as DB (MySQL/MariaDB)
+  participant WEB as "FastAPI Webhook"
+  participant PTB as "PTB Handlers"
+  participant DB as "DB (MySQL/MariaDB)"
 
   TG->>WEB: POST /<secret path> (update)
   WEB->>PTB: Update object
   rect rgb(245,245,245)
-    note over PTB: Handlers normalize & persist
+    Note over PTB: Handlers normalize & persist
     PTB->>DB: upsert users, insert unique (first,last,username)+seen_at
     PTB->>DB: mark chat/member (first/last seen, last_checked)
   end
   alt fields changed & dedup allows
     PTB->>TG: send message — announce change + history
   else no change
-    note over PTB: opportunistic mini-scan for a few stale members
+    Note over PTB: opportunistic mini-scan for a few stale members
   end
 
   loop every SCAN_INTERVAL_SECS
     PTB->>TG: get_chat_member (soft rate-limited)
-    PTB->>DB: compare vs snapshot; record & optionally announce
+    PTB->>DB: compare vs snapshot, record & optionally announce
   end
 ```
 
@@ -430,4 +430,25 @@ Contributions are welcome! If you intend to contribute here (not just to your fo
 
 ## License
 
-Specify your license here (e.g. MIT). If a `LICENSE` file exists in the repo, that is the source of truth.
+MIT License
+
+Copyright (c) 2025 oxaa Boris Karaoglanov
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
