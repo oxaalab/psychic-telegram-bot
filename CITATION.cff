@@ -1,0 +1,7 @@
+cff-version: 1.2.0
+title: psychic-telegram-bot
+message: If you use this software, please cite it.
+authors:
+  - name: oxaa
+version: 0.0.0
+date-released: 2025-5-20
