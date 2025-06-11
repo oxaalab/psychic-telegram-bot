@@ -4,8 +4,8 @@ ARG DEBIAN_FRONTEND=noninteractive
 RUN addgroup --system app && adduser --system --ingroup app app \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
-         tzdata \
-         ca-certificates \
+    tzdata \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
@@ -16,8 +16,8 @@ ENV POETRY_HOME="/opt/poetry" \
     POETRY_NO_INTERACTION=1
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
-         curl \
-         ca-certificates \
+    curl \
+    ca-certificates \
     && rm -rf /var/lib/apt/lists/* \
     && curl -sSL https://install.python-poetry.org | python3 - \
     && ln -sf /opt/poetry/bin/poetry /usr/local/bin/poetry \
@@ -35,7 +35,7 @@ FROM base AS runtime
 COPY --from=builder /tmp/requirements.txt /requirements.txt
 RUN --mount=type=cache,target=/root/.cache/pip \
     python -m pip install --upgrade pip setuptools wheel \
- && pip install --no-cache-dir -r /requirements.txt
+    && pip install --no-cache-dir -r /requirements.txt
 
 COPY . /usr/src/app
 RUN chmod +x entrypoint.sh && chown -R app:app /usr/src/app
